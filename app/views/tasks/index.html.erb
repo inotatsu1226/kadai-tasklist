@@ -21,16 +21,12 @@
 <h1>メッセージ一覧</h1>
 
 <ul>
-  
-<% @tasks.each do |message| %>
-
-    <li>
-<%= task.content %>
-</li>
-  
-<% end %>
-
+  <% @tasks.each do |task| %>
+    <li><%= link_to task.id, task %> : <%= task.content %></li>
+  <% end %>
 </ul>
+
+<%= link_to '新規タスクの追加', new_task_path %>
 
   </body>
 </html>
