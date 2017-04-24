@@ -37,7 +37,7 @@ class UsertasksController < ApplicationController
     @usertask = Usertask.find(params[:id])
 
     if @usertask.update(usertasks_params)
-      render :'usertaska'
+      redirect_to usertask_url
     else
       render :edit
     end
