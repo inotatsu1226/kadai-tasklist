@@ -1,5 +1,18 @@
 class ToppagesController < ApplicationController
+  
+  def index
+
+  
+      @user = User.find_by(id: session[:user_id])
+      @usertask = User.find_by(id: session[:user_id]).usertasks.build  # form_for 用
+      @usertasks = User.find_by(id: session[:user_id]).usertasks.order('created_at DESC').page(params[:page])
+    
+  end
+
+  
+  
   def new
+    session[:user_id] = nil
   end
 
   def create
@@ -15,8 +28,6 @@ class ToppagesController < ApplicationController
   end
 
   def destroy
-        session[:user_id] = nil
-    flash[:success] = 'ログアウトしました。'
     redirect_to root_path
   end
   

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageBoard</title>
+    
+<%= csrf_meta_tags %>
+
+
+    
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    
+<%= yield %>
+
+
+
+
+
+<%= form_for(@usertask,:url=>{:action=>'update'})do |f| %>
+
+
+ <div class="row">
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+
+
+  <div class="form-group">
+  <%= f.label :content, 'タスク' %>
+  <%= f.text_field :content ,class: 'form-control'%>
+   </div>
+
+  <div class="form-group">
+  <%= f.label :status, 'ステータス' %>
+  <%= f.text_field :status , class: 'form-control' %>
+  </div>
+  <%= f.submit '編集', class: 'btn btn-primary'%>
+<% end %>
+
+
+
+<%= link_to "削除", delete_path(id: @usertask.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか?"}  , class: 'btn btn-primary'%>
+
+
+ </div>
+</div>
+
+
+
+
+
+
+
+<%= link_to '一覧に戻る', usertask_path %>
+
+  </body>
+</html>

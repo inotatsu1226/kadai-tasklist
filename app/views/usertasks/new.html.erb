@@ -1,17 +1,33 @@
-<%= form_for(task) do |f| %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageBoard</title>
+    
+<%= csrf_meta_tags %>
+
+
+    
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+    
+<%= yield %>
+
+
+
+
+<%= form_for(@usertask,:url=>{:action=>'create'})do |f| %>
+
 
 
  <div class="row">
   <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
- <% if task.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% task.errors.full_messages.each do |task| %>
-          <li><%= task %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
 
   <div class="form-group">
   <%= f.label :content, 'タスク' %>
@@ -24,8 +40,17 @@
   </div>
 
   <%= f.submit '追加', class: 'btn btn-primary'%>
-  
-  
 <% end %>
  </div>
 </div>
+
+
+
+
+
+
+
+<%= link_to '一覧に戻る', usertask_path %>
+
+  </body>
+</html>

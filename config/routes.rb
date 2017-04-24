@@ -15,7 +15,13 @@ Rails.application.routes.draw do
   delete 'logout', to: 'toppages#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create]
+  get 'usertask',to: 'toppages#index'
   
-  resources :tasks
+   delete 'delete', to: 'usertasks#destroy'
+  
+
+  
+  resources :users, only: [:index, :show, :new, :create]
+
+  resources :usertasks
 end
