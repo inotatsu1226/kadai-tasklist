@@ -30,7 +30,16 @@ class UsertasksController < ApplicationController
   end
 
   def edit
+    @user =  User.find_by(id: session[:user_id])
    @usertask= Usertask.find(params[:id])
+   
+   if @user.id!=@usertask.user_id then
+     redirect_to usertask_url
+   end
+   
+   
+   
+   
   end
 
   def update
