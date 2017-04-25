@@ -5,9 +5,16 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
+     @current_user =  User.find_by(id: session[:user_id])
+     
      @usertask=User.find(params[:id]).usertasks.build
      @usertasks=User.find(params[:id]).usertasks.order('created_at DESC').page(params[:page])
 
+    if @user.id==@current_user.id then
+      redirect_to usertask_url
+      
+
+    end
   end
 
   def new
